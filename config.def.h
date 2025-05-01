@@ -13,13 +13,13 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "JoyPixels:pixelsize=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray3[]       = "#eeeeee";
+static const char col_gray4[]       = "#949494";
+static const char col_cyan[]        = "#222222";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -42,21 +42,26 @@ static Sp scratchpads[] = {
 
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     	instance	title			tags mask   isfloating	isterminal  noswallow	monitor */
-	{ "Gimp",		NULL,		NULL,			0,			1,			0, 			0, 			-1 },
-	{ "Firefox",	NULL,		NULL,			1 << 8,		0,			0, 			0, 			-1 },
-	{ NULL,			"spterm",	NULL,			SPTAG(0),	1,			0, 			0, 			-1 },
-	{ NULL,			"spfm",		NULL,			SPTAG(1),	1,			0, 			0, 			-1 },
-	{ NULL,			"keepassxc",NULL,			SPTAG(2),	0,			0, 			0, 			-1 },
-	{ "St",			NULL,		NULL,			0,			0,			1,			0,			-1 },
-	{ NULL,			NULL,		"Event Tester",	0,			0,			0,			1,			-1 }, /* xev */
+	/* class     					instance		title				tags mask   isfloating	isterminal  noswallow	monitor */
+	{ "Gimp",						NULL,			NULL,				0,			1,			0, 			0, 			-1 },
+	{ "Firefox",					NULL,			NULL,				1 << 8,		0,			0, 			0, 			-1 },
+	{ NULL,							"spterm",		NULL,				SPTAG(0),	1,			0, 			0, 			-1 },
+	{ NULL,							"spfm",			NULL,				SPTAG(1),	1,			0, 			0, 			-1 },
+	{ NULL,							"keepassxc",	NULL,				SPTAG(2),	0,			0, 			0, 			-1 },
+	{ "St",							NULL,			NULL,				0,			0,			1,			0,			-1 },
+	{ NULL,							NULL,			"Event Tester",		0,			0,			0,			1,			-1 }, /* xev */
+	{ "discord",  					NULL,	  		NULL,	    		1 << 6,		0,			0,			0,			-1 },
+	{ "Telegram",  					NULL,	  		NULL,	    		1 << 6,		0,			0,			0,			-1 },
+	{ "Brave-browser",  			NULL,	  		NULL,	    		1 << 7,		0,			0,			0,			-1 },
+	{ "Virt-manager",   			NULL,     		NULL,       		1 << 8,		0,			0,			0,			-1 },
+	{ NULL, 	 					NULL,     		"video0 - mpv",		0,			1,          0,          -1,			-1 },
 };
 
 /* layout(s) */
