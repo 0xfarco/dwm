@@ -19,6 +19,7 @@ dwm (dynamic window manager) is an extremely fast, small, and dynamic window man
 - swallow
 - scratchpads
 - statuscmd
+- systray
 
 ## Installation
 
