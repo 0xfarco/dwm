@@ -14,6 +14,7 @@ dwm (dynamic window manager) is an extremely fast, small, and dynamic window man
 - actual full screen
 - always center
 - systray
+- keychord
 
 ## Installation
 
