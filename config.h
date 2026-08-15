@@ -33,11 +33,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class		instance	title		tags mask	isfloating	monitor */
-	{ "Gimp",		NULL,		NULL,		0,		1,		-1 },
-	{ "discord",		NULL,		NULL,		1 << 7,		0,		-1 },
-        { "Telegram",		NULL,		NULL,		1 << 7,		0,		-1 },
-        { NULL,			NULL,		"video0 - mpv",	0,		1,		-1 },
+	/* class		instance	title		tags mask	isfloating	isfullscreen	monitor */
+	{ "Gimp",		NULL,		NULL,		0,		1,		0,		-1 },
+	{ "discord",		NULL,		NULL,		1 << 7,		0,		0,		-1 },
+        { "Telegram",		NULL,		NULL,		1 << 7,		0,		0,		-1 },
+        { NULL,			NULL,		"video0 - mpv",	0,		1,		0,		-1 },
 };
 
 /* layout(s) */
@@ -127,6 +127,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
