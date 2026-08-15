@@ -1,0 +1,119 @@
+[1mdiff --git a/config.def.h b/config.def.h[m
+[1mindex bcbb15c..303eaad 100644[m
+[1m--- a/config.def.h[m
+[1m+++ b/config.def.h[m
+[36m@@ -38,11 +38,11 @@[m [mstatic const Rule rules[] = {[m
+ 	 *	WM_CLASS(STRING) = instance, class[m
+ 	 *	WM_NAME(STRING) = title[m
+ 	 */[m
+[31m-	/* class		instance	title		tags mask	isfloating	isfullscreen	monitor */[m
+[31m-	{ "Gimp",		NULL,		NULL,		0,		1,		0,		-1 },[m
+[31m-	{ "discord",		NULL,		NULL,		1 << 7,		0,		0,		-1 },[m
+[31m-        { "Telegram",		NULL,		NULL,		1 << 7,		0,		0,		-1 },[m
+[31m-        { NULL,			NULL,		"video0 - mpv",	0,		1,		0,		-1 },[m
+[32m+[m	[32m/* class		instance	title			tags mask	isfloating	isfullscreen	monitor */[m
+[32m+[m	[32m{ "Gimp",		NULL,		NULL,			0,		1,		0,		-1 },[m
+[32m+[m	[32m{ "discord",		NULL,		NULL,			1 << 7,	0,		0,		-1 },[m
+[32m+[m	[32m{ "Telegram",		NULL,		NULL,			1 << 7,	0,		0,		-1 },[m
+[32m+[m	[32m{ NULL,		NULL,		"video0 - mpv",	0,		1,		0,		-1 },[m
+ };[m
+ [m
+ /* layout(s) */[m
+[36m@@ -87,32 +87,32 @@[m [mstatic const Layout layouts[] = {[m
+ [m
+ /* commands */[m
+ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */[m
+[31m-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };[m
+[32m+[m[32mstatic const char *dmenucmd[] = { "dmenu_run_history", "-m", dmenumon, NULL };[m
+ static const char *termcmd[]  = { "st", NULL };[m
+ [m
+ #include "movestack.c"[m
+ [m
+ static Keychord *keychords[] = {[m
+[31m-       /* Keys        function        argument */[m
+[31m-       &((Keychord){1, {{MODKEY, XK_p}},                                       spawn,          {.v = dmenucmd } }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_Return}},                        spawn,          {.v = termcmd } }),[m
+[31m-       &((Keychord){2, {{MODKEY, XK_e}, {MODKEY, XK_e}},                       spawn,          {.v = termcmd } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_b}},                                       togglebar,      {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_j}},                                       focusstack,     {.i = +1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_k}},                                       focusstack,     {.i = -1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_i}},                                       incnmaster,     {.i = +1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_d}},                                       incnmaster,     {.i = -1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_h}},                                       setmfact,       {.f = -0.05} }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_l}},                                       setmfact,       {.f = +0.05} }),[m
+[32m+[m	[32m/* Keys        function        argument */[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_p}},                                       spawn,          {.v = dmenucmd } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_Return}},                        spawn,          {.v = termcmd } }),[m
+[32m+[m	[32m&((Keychord){2, {{MODKEY, XK_e}, {MODKEY, XK_e}},                       spawn,          {.v = termcmd } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_b}},                                       togglebar,      {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_j}},                                       focusstack,     {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_k}},                                       focusstack,     {.i = -1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_i}},                                       incnmaster,     {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_d}},                                       incnmaster,     {.i = -1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_h}},                                       setmfact,       {.f = -0.05} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_l}},                                       setmfact,       {.f = +0.05} }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_h}},                             setcfact,       {.f = +0.25} }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_l}},                             setcfact,       {.f = -0.25} }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_o}},                             setcfact,       {.f =  0.00} }),[m
+[31m-	&((Keychord){1, {{MODKEY|ShiftMask, XK_j}},                           movestack,      {.i = +1 } }),[m
+[31m-	&((Keychord){1, {{MODKEY|ShiftMask, XK_k}},                           movestack,      {.i = -1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_Return}},                                  zoom,           {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_Tab}},                                     view,           {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_c}},                             killclient,     {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_u}},                                       incrgaps,       {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_j}},                             movestack,      {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_k}},                             movestack,      {.i = -1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_Return}},                                  zoom,           {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_Tab}},                                     view,           {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_c}},                             killclient,     {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_u}},                                       incrgaps,       {.i = +1 } }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_u}},                             incrgaps,       {.i = -1 } }),[m
+ 	&((Keychord){1, {{MODKEY,XK_i}},                                        incrigaps,      {.i = +1 } }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_i}},                             incrigaps,      {.i = -1 } }),[m
+[36m@@ -128,7 +128,7 @@[m [mstatic Keychord *keychords[] = {[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_9}},                             incrovgaps,     {.i = -1 } }),[m
+ 	&((Keychord){1, {{MODKEY, XK_0}},                                       togglegaps,     {0} }),[m
+ 	&((Keychord){1, {{MODKEY|ShiftMask, XK_0}},                             defaultgaps,    {0} }),[m
+[31m-       &((Keychord){2, {{MODKEY, XK_w}, {0, XK_t}},                            setlayout,      {.v = &layouts[0]} }),[m
+[32m+[m	[32m&((Keychord){2, {{MODKEY, XK_w}, {0, XK_t}},                            setlayout,      {.v = &layouts[0]} }),[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_m}},                            setlayout,      {.v = &layouts[1]} }),[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_d}},                            setlayout,      {.v = &layouts[4]} }),[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_b}},                            setlayout,      {.v = &layouts[5]} }),[m
+[36m@@ -136,16 +136,16 @@[m [mstatic Keychord *keychords[] = {[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_g}},                            setlayout,      {.v = &layouts[9]} }),[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_c}},                            setlayout,      {.v = &layouts[11]} }),[m
+ 	&((Keychord){2, {{MODKEY, XK_w}, {0, XK_f}},                            setlayout,      {.v = &layouts[13]} }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_space}},                                   setlayout,      {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_space}},                         togglefloating, {0} }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_f}},                             togglefullscr,  {0}}),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_0}},                                       view,           {.ui = ~0 } }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_0}},                             tag,            {.ui = ~0 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_comma}},                                   focusmon,       {.i = -1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY, XK_period}},                                  focusmon,       {.i = +1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_comma}},                         tagmon,         {.i = -1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_period}},                        tagmon,         {.i = +1 } }),[m
+[31m-       &((Keychord){1, {{MODKEY|ShiftMask, XK_q}},                             quit,           {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_space}},                                   setlayout,      {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_space}},                         togglefloating, {0} }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_f}},                             togglefullscr,  {0}}),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_0}},                                       view,           {.ui = ~0 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_0}},                             tag,            {.ui = ~0 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_comma}},                                   focusmon,       {.i = -1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY, XK_period}},                                  focusmon,       {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_comma}},                         tagmon,         {.i = -1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_period}},                        tagmon,         {.i = +1 } }),[m
+[32m+[m	[32m&((Keychord){1, {{MODKEY|ShiftMask, XK_q}},                             quit,           {0} }),[m
+ 	&((Keychord){1, {{MODKEY|ControlMask|ShiftMask, XK_q}},                 quit,           {1} }),[m
+ 	TAGKEYS(                        XK_1,                      0)[m
+ 	TAGKEYS(                        XK_2,                      1)[m
+[36m@@ -162,8 +162,8 @@[m [mstatic Keychord *keychords[] = {[m
+ /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */[m
+ static const Button buttons[] = {[m
+ 	/* click                event mask      button          function        argument */[m
+[31m-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },[m
+[31m-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },[m
+[32m+[m	[32m{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },[m
+[32m+[m	[32m{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },[m
+ 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },[m
+ 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },[m
+ 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },[m
